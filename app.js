@@ -23,6 +23,23 @@ const money = (n) =>
 
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
+/* ---------- Beta banner ---------- */
+const betaBanner = document.getElementById("beta-banner");
+const betaDismiss = document.getElementById("beta-dismiss");
+const BETA_KEY = "austin-lads-goldy-beta-dismissed";
+
+if (localStorage.getItem(BETA_KEY) === "1") {
+  betaBanner.remove();
+} else {
+  betaDismiss.addEventListener("click", () => {
+    betaBanner.classList.add("hide");
+    localStorage.setItem(BETA_KEY, "1");
+    betaBanner.addEventListener("animationend", () => betaBanner.remove(), {
+      once: true,
+    });
+  });
+}
+
 /* ---------- View switching ---------- */
 const tabs = document.querySelectorAll(".tab");
 const views = document.querySelectorAll(".view");
