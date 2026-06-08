@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Austin Lads Goldy Extravaganza</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="flag-band" aria-hidden="true">
+    <div class="flag-star">
+      <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <polygon points="50,3 61,38 98,38 68,60 79,96 50,74 21,96 32,60 2,38 39,38"
+                 fill="#fff" />
+      </svg>
+    </div>
+  </div>
+
+  <header>
+    <h1>Austin Lads Goldy Extravaganza</h1>
+    <p class="tagline">Track the spend. Settle the score. Get back to square.</p>
+    <nav>
+      <button class="tab active" data-view="entry">Enter Expenses</button>
+      <button class="tab" data-view="summary">Who Owes Who</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ENTRY VIEW -->
+    <section id="entry" class="view active">
+      <div class="card">
+        <h2>The Lads</h2>
+        <form id="person-form" class="inline-form">
+          <input type="text" id="person-name" placeholder="Add a name…" autocomplete="off" />
+          <button type="submit">Add</button>
+        </form>
+        <ul id="people-list" class="chips"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Add an Expense</h2>
+        <form id="expense-form">
+          <div class="field">
+            <label for="exp-desc">What was it?</label>
+            <input type="text" id="exp-desc" placeholder="e.g. Round at the bar" autocomplete="off" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="exp-amount">Amount ($)</label>
+              <input type="number" id="exp-amount" min="0" step="0.01" placeholder="0.00" />
+            </div>
+            <div class="field">
+              <label for="exp-payer">Who paid?</label>
+              <select id="exp-payer"></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Split between</label>
+            <div class="split-controls">
+              <button type="button" id="split-all" class="link-btn">Select all</button>
+              <button type="button" id="split-none" class="link-btn">Clear</button>
+            </div>
+            <div id="split-list" class="split-list"></div>
+          </div>
+          <button type="submit" class="primary">Add Expense</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Expenses</h2>
+        <ul id="expense-list" class="expense-list"></ul>
+      </div>
+    </section>
+
+    <!-- SUMMARY VIEW -->
+    <section id="summary" class="view">
+      <div class="card">
+        <h2>Totals</h2>
+        <p class="grand-total" id="grand-total"></p>
+        <ul id="spend-list" class="spend-list"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Settle Up</h2>
+        <p class="hint">The fewest payments needed to get everyone back to square.</p>
+        <ul id="settlement-list" class="settlement-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <button id="reset-btn" class="danger">Reset everything</button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
